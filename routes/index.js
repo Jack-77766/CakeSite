@@ -73,10 +73,11 @@ router.post('/register', function(req,res) {
     var password = req.body.password;
     User.register(newUser, password, function(err, user){
         if(err){
-            console.log(err);
+            req.flash("error", err.message);
             return res.redirect('/register');
         }
         passport.authenticate('local')(req, res, function(){
+           req.flash('success', "Signed up succesfully!  Welcome " + req.body.username + "!");
            res.redirect('/'); 
         });
     });
@@ -91,14 +92,15 @@ router.get('/login', function(req, res) {
 
 
 //LOGIN ROUTE
-router.post('/login', 
-            passport.authenticate('local',
-                                        {
-                                            successRedirect: '/',
-                                            failureRedirect: '/login'
-                                        }),
-                                        function(req, res) {}
-);
+router.post("/login", function (req, res, next) {
+  passport.authenticate("local",
+    {
+      successRedirect: "/",
+      failureRedirect: "/login",
+      failureFlash: true,
+      successFlash: "Welcome to the CakeApp, " + req.body.username + "!"
+    })(req, res);
+});
 
 
 //LOGOUT ROUTE
