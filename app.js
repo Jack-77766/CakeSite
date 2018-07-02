@@ -20,7 +20,9 @@ var cakeRoutes    = require('./routes/cakes'),
 
 
 //APP CONFIG
-mongoose.connect('mongodb://localhost/cake_app');
+var DATABASEURL  = process.env.DATABASEURL;
+mongoose.connect(DATABASEURL);
+
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended:true}));
