@@ -1,0 +1,26 @@
+<% include ./partials/header.ejs %>
+
+<!--JUMBOTRON-->
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to the Cake App</h1>
+  <p class="lead">We have the yummiest collection of cakes you can find</p>
+  <p>Here you can find cakes you want, the recipes, add your own cakes, edit cakes and comment on cakes!</p>
+</div>
+
+<div class='container'>
+   <div class='row'>
+      <% cakes.forEach(function(cake){ %>
+         <div class='col-md-4 col-sm-6'>
+            <div class='card'>
+               <img class='card-img-top' src='<%= cake.image %>'>
+               <div class='card-body'>
+                  <h5 class='card-title'><%= cake.name %></h5>
+                  <p calss='card-text'><%= cake.description %></p>
+               </div>
+            </div>
+         </div>
+       <% }) %>
+   </div>
+</div>
+
+<% include ./partials/footer.ejs %>

@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+
+
+<div class='container form-format'>
+    <form action='/cakes/<%=cake._id%>/comments/<%=comment._id%>?_method=PUT' method='POST'>
+        <% console.log(cake.id + ' ' + comment.id); %>
+        <div class='form-group'>
+            <label>Edit your comment here</label>
+            <input type='text' class='form-control' name='comment[text]' value='<%=comment.text%>'>
+            <button type='submit' class='btn btn-xs crimson text-white'>Submit</button>
+        </div>
+        
+    </form>
+</div>
+
+
+
+<% include ../partials/footer %>

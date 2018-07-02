@@ -1,0 +1,14 @@
+<% include ../partials/header.ejs %>
+
+<div class='container form-format'>
+    <h3>Add a new comment to <%= cake.name %></h3>
+    <form action='/cakes/<%=cake.id%>/comments' method='POST'>
+        <div class='form-group'>        
+            <label>Comment</label>
+            <input type='text' class='form-control' name='comment[text]'>
+        </div>
+            <button class='btn crimson text-white' stype='submit'>Submit</button>
+    </form>
+</div>
+
+<% include ../partials/footer.ejs %>

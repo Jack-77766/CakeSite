@@ -1,0 +1,45 @@
+<% include ../partials/header.ejs %>
+
+
+<div class='container'>
+    <div class='card'>
+        <img class='card-img-top' src='<%= cake.image %>'>
+        <div class='card-body'>
+            <h3 class='card-title float-left'><%= cake.name %></h3>
+            <% if(currentUser && cake.user.id.equals(currentUser.id)) { %>
+                <div class='float-right'>
+                    <form action='/cakes/<%= cake._id %>?_method=DELETE' method='POST'>
+                        <a class='card-text btn  crimson text-white d-inline' href='/cakes/<%= cake._id %>/edit'>Edit</a>
+                        <button class='btn  crimson text-white d-inline' type='submit'>Delete</button>
+                    </form>
+                </div>
+            <% } %>    
+        </div>
+        <div class= 'card-body'>
+            <p class='card-text'><%= cake.description %></p>
+            <p class='card-text recipe'><%= cake.recipe %></p>
+        </div>
+        <hr>
+        <div class='card-body'>
+            <% cake.comments.forEach(function(comment) { %>
+                <p class = 'card-text'><em>Submited by <strong><%= comment.author.username %></strong></em>: <%= comment.text %></p>
+                <% if(currentUser && comment.author.id.equals(currentUser.id)) { %>
+                    <form action='/cakes/<%=cake._id%>/comments/<%=comment._id%>?_method=DELETE' method='POST'>
+                        
+                        <a class='card-text btn btn-sm crimson text-white d-inline' 
+                        href='/cakes/<%=cake._id%>/comments/<%=comment._id%>/edit'>Edit Comment</a>
+                        
+                        <button type='submit' 
+                            class='card-text btn btn-sm crimson text-white d-inline'>Delete Comment</button>
+                    </form>
+                <% } %>    
+            <% }) %>
+            <hr>
+                <% if(currentUser) { %> 
+                    <a class='btn crimson text-white' href='/cakes/<%= cake._id %>/comments/new'>Add New Comment</a>
+                <% } %>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

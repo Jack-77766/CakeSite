@@ -1,0 +1,42 @@
+<% include ../partials/header.ejs %>
+
+
+<div class='container'>
+    
+    <div class='form-format'> 
+        <div class='title-format'>
+            <h3>Here you can create a new cake entry!!!</h3>
+        </div>
+        <form action='/cakes/', method='POST'>
+            <div class="form-group">
+                <label>Cake Name</label>
+                <input type='text' name='cake[name]' class='form-control'>
+            </div>
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type='text' name='cake[image]' class='form-control'>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select name='cake[category]' class='form-control'>
+                    <option value='birthday-cakes'>Birthday Cakes</option>
+                    <option value='fancy-cakes'>Fancy Cakes</option>
+                    <option value='cupcakes'>Cupcakes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name='cake[description]' class='form-control'></textarea>
+            </div>
+            <div class="form-group">
+                <label>Recipe</label>
+                <textarea name='cake[recipe]' class='form-control'></textarea>
+            </div>
+            <div class="form-group">
+                <button type='submit' class='form-control btn crimson text-white'>Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<% include ../partials/footer.ejs %>

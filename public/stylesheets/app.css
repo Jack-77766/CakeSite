@@ -1,0 +1,32 @@
+
+
+.navbar-custom{
+    background-color: Crimson;
+    color:            White;
+}
+
+.jumbotron {
+    background-color: Pink;
+    /*color:            White;*/
+}
+
+.container {
+    margin-top: 4rem;
+}
+
+.recipe{
+    white-space: pre-line;
+}
+
+.crimson {
+    background: Crimson;
+}
+
+.form-format {
+    width:40%; 
+    margin: 25px auto;
+}
+
+.title-format {
+    margin: 25px auto;
+}

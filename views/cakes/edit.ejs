@@ -1,0 +1,38 @@
+<% include ../partials/header.ejs %>
+
+
+<div class='container'>
+    <h1>Welcome to the Edit Page</h1>
+    
+    <form action='/cakes/<%= cake.id %>?_method=PUT', method='POST'>
+        <div class="form-group">
+            <label>Cake Name</label>
+            <input type='text' name='cake[name]' value='<%= cake.name %>' class='form-control'>
+        </div>
+        <div class="form-group">
+            <label>Image URL</label>
+            <input type='text' name='cake[image]' value='<%= cake.image %>' class='form-control'>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name='cake[category]' value='<%= cake.category %>' class='form-control'>
+                <option value='birthday-cakes'>Birthday Cakes</option>
+                <option value='fancy-cakes'>Fancy Cakes</option>
+                <option value='cupcakes'>Cupcakes</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name='cake[description]' class='form-control'><%= cake.description %></textarea>
+        </div>
+        <div class="form-group">
+            <label>Recipe</label>
+            <textarea name='cake[recipe]' class='form-control'><%= cake.recipe %></textarea>
+        </div>
+        <div class="form-group">
+            <input type='submit' class='btn btn-primary' style="background-color: Crimson; border-color: pink;">
+        </div>
+    </form>
+
+</div>
+<% include ../partials/footer.ejs %>
