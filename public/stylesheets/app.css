@@ -30,3 +30,23 @@
 .title-format {
     margin: 25px auto;
 }
+
+.crimson-text {
+    color: crimson;
+    text-align: center;
+}
+.galada {
+    font-family: 'Galada', cursive;
+}
+
+.shrikhand {
+    font-family: 'Shrikhand', cursive;
+}
+
+.no-line {
+    text-decoration: none;
+}
+
+.abril {
+    font-family: 'Abril Fatface', cursive;
+}

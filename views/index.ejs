@@ -7,20 +7,54 @@
   <p>Here you can find cakes you want, the recipes, add your own cakes, edit cakes and comment on cakes!</p>
 </div>
 
-<div class='container'>
-   <div class='row'>
-      <% cakes.forEach(function(cake){ %>
-         <div class='col-md-4 col-sm-6'>
-            <div class='card'>
-               <img class='card-img-top' src='<%= cake.image %>'>
-               <div class='card-body'>
-                  <h5 class='card-title'><%= cake.name %></h5>
-                  <p calss='card-text'><%= cake.description %></p>
-               </div>
-            </div>
-         </div>
-       <% }) %>
-   </div>
+<% //variables for if the category has been found %>
+<% var bday = false, fancy = false, cup = false;  %>
+<% //index %>
+<% var i = 0; %>
+<% //vars to store the found cakes %>
+<% var birthdayCake, fancyCake, cupcake%>
+
+<% //loop until we find 1 cake of every category %>
+<% while(!bday || !fancy || !cup) { %>
+<%   var cake = cakes[i]; %>
+<%   if(cake.category==='birthday-cakes' && bday==false) { %> 
+<%       birthdayCake = cake; %>
+<%       bday = true; %>
+<%   } %>
+<%   if(cake.category==='fancy-cakes' && fancy==false)  {   %> 
+<%       fancyCake = cake; %>
+<%       fancy = true; %>
+<%   } %>
+<%   if(cake.category==='cupcakes' && cup==false){ %>
+<%       cupcake = cake; %>
+<%       cup = true; %>
+<%   } %>
+<%   i++; %>
+<% } %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h1 class='crimson-text abril'>Birthday Cakes</h1>
+      <div class='card'>
+        <a href='/birthday-cakes'><img class='card-img-top' src='<%= birthdayCake.image %>'></a>
+      </div>
+    </div>
+    <div class="col-4">
+      <h1 class='crimson-text abril'>Fancy Cakes</h1>
+      <div class='card'>
+         <a href='/fancy-cakes'><img class='card-img-top' src='<%= fancyCake.image %>'></a>
+      </div>
+    </div>
+    <div class="col-4">
+      <h1 class='crimson-text abril'>Cupcakes</h1>
+      <div class='card'>
+          <a href='/cupcakes'><img class='card-img-top' src='<%= cupcake.image %>'></a>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <% include ./partials/footer.ejs %>
